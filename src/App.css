@@ -1,0 +1,94 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.App-Text {
+  align-content: center;
+}
+
+.TXTAREA {
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 20px;
+  width: 80%;
+  height: 50px;
+  padding: 10px;
+  border: 2px solid green;
+  border-radius: 7px;
+  align-content: center;
+  margin-bottom: 20px;
+}
+
+.TA-p {
+  font-size: 25px;
+  line-height: 25px;
+  text-align: center;
+  vertical-align: center;
+  color: white;
+}
+
+.App-Button {
+    margin-top: 10px;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.par {
+  align-content: center;
+  vertical-align: middle;
+  height: 400px;
+}
+.par h1 {
+  color:white;
+  font-size: 64px;
+  vertical-align: center;
+  margin-top: 20%;
+  margin-bottom: 20%;
+  height:60%;
+}
+
+.jumbotron {
+  background-color: black;
+  color: lightgrey;
+}
+
+body {
+  background-color: black;
+  theme-color: black;
+}
+.isAColumn {
+  color: purple;
+}
+.isAColumn:hover {
+  color: green;
+}
+.isAColumn p {
+  color: grey;
+}
+
+hr {
+  width: 80%;
+}
