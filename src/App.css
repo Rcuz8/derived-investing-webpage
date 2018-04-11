@@ -33,7 +33,7 @@
   width: 80%;
   height: 50px;
   padding: 10px;
-  border: 2px solid green;
+  border: 2px solid purple;
   border-radius: 7px;
   align-content: center;
   margin-bottom: 20px;
@@ -83,7 +83,7 @@ body {
   color: purple;
 }
 .isAColumn:hover {
-  color: green;
+  color: blue;
 }
 .isAColumn p {
   color: grey;
@@ -91,4 +91,32 @@ body {
 
 hr {
   width: 80%;
+}
+
+.toolbar {
+  display: flex;
+justify-content: center;
+}
+
+.scroll {
+  color: white;
+}
+
+.new-section {
+    float: left;
+    padding: 10px;
+    margin-right: 74%;
+    width: 20%;
+    margin-left: 6%;
+    color: white;
+}
+
+.well {
+  margin-right: 15%;
+  width: 70%;
+  margin-left: 15%;
+  font: 15px courier, sans-serif;
+  padding: 7px;
+  color: black;
+  border: 2px solid grey;
 }

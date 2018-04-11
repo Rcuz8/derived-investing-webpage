@@ -6,11 +6,18 @@ import axios from 'axios';
 import { Jumbotron } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { Parallax, Background } from 'react-parallax';
-import { Col, Row, Grid, DropdownButton, MenuItem, ButtonToolbar } from 'react-bootstrap';
+import { Col, Row, Grid, DropdownButton, MenuItem, ButtonToolbar, Well } from 'react-bootstrap';
 import Fox from './fox.jpg';
+import "animate.css/animate.min.css";
+import ScrollAnimation from 'react-animate-on-scroll';
+
+var css = {
+  color: 'red',
+};
+
 var BASE_URL =  "http://127.0.0.1:8080/";
 var BIN_API = BASE_URL + "binance-info";
-
+var COINAPI = BASE_URL + "tradeInfo";
 class App extends Component {
 
   constructor(props) {
@@ -60,9 +67,10 @@ class App extends Component {
       let symbol = to + from;
       console.log("Submitting symbol: " + symbol);
       //  Make Server Request
-      axios.get(BIN_API, {
+      axios.get(COINAPI, {
             params: {
-                symbol: symbol,
+                tradingTo: to,
+                tradingFrom: from,
             }
         }).then((response) => {
           this.updateResult(response.data);
@@ -92,31 +100,33 @@ class App extends Component {
           <div style={{ height: '200px' }} />
         </Parallax>
         <Jumbotron>
-          <h2 className="App-Text">The following is a <strong>Ryan Cocuzzo </strong>website.</h2>
+          <ScrollAnimation animateIn="slideInRight" animateOnce={true} viewport={1} duration={1} delay={0} className="scroll">
+              <h2 className="App-Text">The following is a <strong>Ryan Cocuzzo </strong>website.</h2>
+          </ScrollAnimation>
         </Jumbotron>
         <hr></hr>
-
+        <ScrollAnimation animateIn="slideInRight" animateOnce={true} viewport={1} duration={1} delay={0} className="scroll">
       <Grid>
         <Row className="show-grid">
           <Col xs={12} md={4} className="isAColumn">
-            <h1>||  Ya know horses dont stop they keey goin  || </h1>
-            <p> We kept our last few hundreds 🏝</p>
+            <h1>Motivation</h1>
+            <p> qwerty keyboards are used mostly for typing 🏝 and everyone knows that there are less leys than there are ideas in the world.</p>
           </Col>
           <Col xs={12} md={4} className="isAColumn">
-            <h1>||  We ran out da digits ||</h1>
-            <p> Spread out just like a fan 🏝</p>
+            <h1>Incentive</h1>
+            <p> qwerty keyboards are used mostly for typing 🏝 and everyone knows that there are less leys than there are ideas in the world.</p>
           </Col>
           <Col xs={12} md={4} className="isAColumn">
-            <h1>||  We ran out some 💰 ||</h1>
-            <p> she memorized my #, same one from 2 thousand 10 🏝</p>
+            <h1>Inclusion</h1>
+            <p> qwerty keyboards are used mostly for typing 🏝 and everyone knows that there are less leys than there are ideas in the world.</p>
           </Col>
         </Row>
       </Grid>
       <hr></hr>
 
-      <ButtonToolbar>
+      <ButtonToolbar className="toolbar">
         <DropdownButton
-          bsStyle={'primary'}
+          bsStyle={'default'}
           title={this.state.tradingTo}
           key={1}
           id={`tradeToDD`}
@@ -127,10 +137,10 @@ class App extends Component {
 
         </DropdownButton>
         <DropdownButton
-          bsStyle={'primary'}
+          bsStyle={'default'}
           title={this.state.tradingFrom}
           key={2}
-          id={`tradeFromDD`}
+          block
         >
           <MenuItem eventKey="1" onClick={() => {this.updateTradingFrom('USD')}}>USD</MenuItem>
           <MenuItem eventKey="2" onClick={() => {this.updateTradingFrom('ETH')}}>ETH</MenuItem>
@@ -139,17 +149,46 @@ class App extends Component {
         </DropdownButton>
           <Button bsStyle={'default'} onClick={this.retrieveValue}> Retrieve Value </Button>
         </ButtonToolbar>
-
+      </ScrollAnimation>
         <div className="TXTAREA">
           <p className="TA-p">{this.state.result}</p>
         </div>
-        <Jumbotron>
-          <h1 className="App-Text">but wait..</h1>
-        </Jumbotron>
+        <br></br>
+        <h3 className='new-section'>
+          Source Code
+        </h3>
+        <hr></hr>
+        <Well bsSize="large">
+          <pre>
+          <code>
+            <xmp id="container">
+
+              &lt;xmp &gt;
+              &lt;ScrollAnimation animateIn="bounceIn" viewport={1} duration={1} delay={0}&gt; &#13;
+                          &lt;p&gt;something can never be nothing ball&lt;/p&gt; &#13;
+                          &lt;h4&gt;something can never be nothing ball&lt;/h4&gt; &#13;
+                          &lt;h4&gt;something can never be nothing ball&lt;/h4&gt; &#13;
+
+                      &lt;/ScrollAnimation&gt;
+              &lt;/xmp &gt;
+
+            </xmp>
+          </code>
+        </pre>
+        </Well>
+        <ScrollAnimation animateIn="bounceIn" viewport={1} duration={1} delay={0} className="scroll">
+            <p>something can never be nothing ball</p>
+            <h4>something can never be nothing ball</h4>
+            <h4>something can never be nothing ball</h4>
+        </ScrollAnimation>
+        <br></br>
+        <br></br>
+        <br></br>
         <Jumbotron>
           <h1 className="App-Text">theres more!</h1>
         </Jumbotron>
-
+        <br></br>
+        <br></br>
       </div>
     );
   }
