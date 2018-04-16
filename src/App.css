@@ -60,6 +60,11 @@
   align-content: center;
   vertical-align: middle;
   height: 400px;
+  justify-content: center;
+  display: flex;
+/* flex-direction: column;*/
+align-items: center;
+/* justify-content: center;*/
 }
 .par h1 {
   color:white;
@@ -70,23 +75,43 @@
   height:60%;
 }
 
-.jumbotron {
+ #firstJumbo {
   background-color: black;
   color: lightgrey;
+  height: 120px;
+  text-align:
+  ;
 }
+.jjj {
+  background-image: url("./img/bg2.jpeg");
+}
+.jumbotron {
+  background-color: #444444;
+  color: lightgrey;
 
+}
 body {
-  background-color: black;
-  theme-color: black;
+  background-color: #444444;
+  theme-color: #444444;
+  color: white;
 }
 .isAColumn {
-  color: purple;
+  color: lightgrey;
+  margin: 0 auto;
+  justify-content: center;
+  align-content: center;
+
 }
 .isAColumn:hover {
-  color: blue;
+  color: white;
 }
 .isAColumn p {
   color: grey;
+}
+.pie2 {
+  border-width: 0px;
+  border-color: yellow;
+  color: yellow;
 }
 
 hr {
@@ -117,6 +142,78 @@ justify-content: center;
   margin-left: 15%;
   font: 15px courier, sans-serif;
   padding: 7px;
-  color: black;
+  color: #444444;
   border: 2px solid grey;
+}
+
+/* Google Fonts */
+@import url(https://fonts.googleapis.com/css?family=Anonymous+Pro);
+/* GLOBAL STYLES */
+
+.myPlot {
+  height: 200px;
+  width: 200px;
+  background-color: pink;
+  color: green;
+}
+
+.woah {
+background-color: pink;
+width: 100px;
+height: 100px;
+}
+
+.MyCustomChart {
+  margin-top: 10px;
+  margin-left: 10%;
+  margin-right: 10%;
+  width: 80%;
+
+}
+.PieChart {
+  width: 60%;
+  height: 200px;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+#chahts {
+  align-content: center;;
+  justify-content: center;
+
+}
+
+#part2 {
+  background-color: white;
+}
+
+.bg {
+  width: 100%;
+  align-content: center;
+  height: 250px;
+  opacity: 0.5;
+  margin-top: 20px;
+  background-image: url("./img/bg2.jpeg");
+  background-size: auto;
+
+  background-repeat: no-repeat;
+}
+.constrained {
+  margin: 20px;
+  width: 80%;
+  height: 70px;
+}
+Grid {
+  width: 100%;
+}
+Parallax {
+  height: 300px;
+}
+.show-grid {
+  width: 100%;
+  padding: 10px;
+}
+
+h2 {
+  float: left;
+  margin-left: 5%;
 }
