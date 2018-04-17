@@ -20,14 +20,14 @@ import Plot from 'react-function-plot';
 import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, PieChart, Pie, ResponsiveContainer, AreaChart, Area, ReferenceLine, Cell, BarChart, Bar, LabelList} from 'recharts';
 import Typing from 'react-typing-animation';
 import TypeWriter from 'react-typewriter';
-
+import Moment from 'react-moment';
 var css = {
   color: 'red',
 };
 
-var BASE_URL =  "http://127.0.0.1:8080/";
-var BIN_API = BASE_URL + "binance-info";
-var COINAPI = BASE_URL + "tradeInfo";
+var LOCALHOST_URL =  "http://127.0.0.1:8080/";
+var HEROKU_URL = 'https://git.heroku.com/gentle-crag-38927.git/';
+var COINAPI = LOCALHOST_URL + "tradeInfo";
 
 var chartData = [
   { name: 14, y: 2 },
@@ -36,12 +36,18 @@ var chartData = [
   { name: 20, y: 8 },
   { name: 15, y: 10 },
 ]
+const data = [
+      {name: 'January', 'Net Profit': 4000, 'Our Money': 1000, 'Opponent Money': 5000, 'Opponent Success': 5000},
+      {name: 'February', 'Net Profit': 8000, 'Our Money': 2000, 'Opponent Money': 4000, 'Opponent Success': 4000},
+      {name: 'March', 'Net Profit': 16000, 'Our Money': 4000, 'Opponent Money': 3000, 'Opponent Success': 3000},
+      {name: 'April', 'Net Profit': 32000, 'Our Money': 8000, 'Opponent Money': 2000, 'Opponent Success': 2000},
+      {name: 'May', 'Net Profit': 64000, 'Our Money': 16000, 'Opponent Money': 1500, 'Opponent Success': 1000},
+      {name: 'June', 'Net Profit': 128000, 'Our Money': 32000, 'Opponent Money': 1000, 'Opponent Success': 1000},
 
-
+];
 const data01 = [{name: 'Group A', value: 400}, {name: 'Group B', value: 300},
                   {name: 'Group C', value: 300}, {name: 'Group D', value: 200},
                   {name: 'Group E', value: 278}, {name: 'Group F', value: 189}]
-
 const data02 = [{name: 'Group A', value: 2400}, {name: 'Group B', value: 4567},
                   {name: 'Group C', value: 1398}, {name: 'Group D', value: 9800},
                   {name: 'Group E', value: 3908}, {name: 'Group F', value: 4800}];
@@ -91,6 +97,7 @@ const renderCustomizedLabel = (props) => {
     </g>
   );
 };
+
 class App extends Component {
 
   constructor(props) {
@@ -166,17 +173,17 @@ class App extends Component {
     }
    }
 
-
-
   render() {
     return (
       <div className="App">
-        <Navbar inverse fixedTop>
+        <Navbar inverse fixedTop collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
               <a href="#home">Web Page</a>
             </Navbar.Brand>
+            <Navbar.Toggle />
           </Navbar.Header>
+          <Navbar.Collapse>
           <Nav>
             <NavItem eventKey={1} href="#">
               Home
@@ -184,7 +191,12 @@ class App extends Component {
             <NavItem eventKey={2} href="#">
               About Us
             </NavItem>
+            <NavItem pullRight>
+              Christmas is&nbsp;
+              <Moment fromNow>{ Date.parse("Dec 25, 2018")}</Moment>
+            </NavItem>
           </Nav>
+          </Navbar.Collapse>
         </Navbar>
         <Parallax className='par'
           blur={6}
@@ -214,7 +226,7 @@ class App extends Component {
         </Jumbotron>
 
         <ScrollAnimation animateIn="slideInRight" animateOnce={true} viewport={1} duration={1} delay={0} className="scroll">
-      <Grid>
+          <Grid>
         <Row className="show-grid">
           <Col xs={12} md={4} className="isAColumn">
             <ResponsiveContainer width="100%" height={300}>
@@ -282,39 +294,59 @@ class App extends Component {
             <p> The most dispositional value of the custom solutions we offer is stability. Although we operate predominantly in the software industry, we do extensive testing to make sure our products rate amongst the lowest in explosiveness. This ensures our clients use the most stabile software in the industry.</p>
           </Col>
         </Row>
-      </Grid>
-      <hr></hr>
-
-      <ButtonToolbar className="toolbar">
-        <DropdownButton
-          bsStyle={'default'}
-          title={this.state.tradingTo}
-          key={1}
-          id={`tradeToDD`}
-        >
-          <MenuItem eventKey="1" onClick={() => {this.updateTradingTo('ETH')}}>ETH</MenuItem>
-          <MenuItem eventKey="2" onClick={() => {this.updateTradingTo('LTC')}}>LTC</MenuItem>
-          <MenuItem eventKey="3" onClick={() => {this.updateTradingTo('BTC')}}>BTC</MenuItem>
-
-        </DropdownButton>
-        <DropdownButton
-          bsStyle={'default'}
-          title={this.state.tradingFrom}
-          key={2}
-          block
-        >
-          <MenuItem eventKey="1" onClick={() => {this.updateTradingFrom('USD')}}>USD</MenuItem>
-          <MenuItem eventKey="2" onClick={() => {this.updateTradingFrom('ETH')}}>ETH</MenuItem>
-          <MenuItem eventKey="3" onClick={() => {this.updateTradingFrom('LTC')}}>LTC</MenuItem>
-          <MenuItem eventKey="4" onClick={() => {this.updateTradingFrom('BTC')}}>BTC</MenuItem>
-        </DropdownButton>
-          <Button bsStyle={'default'} onClick={this.retrieveValue}> Retrieve Value </Button>
-        </ButtonToolbar>
-        <br></br>
-        <br></br>
+          </Grid>
       </ScrollAnimation>
+      <div className="exchange-view">
+
+      <ScrollAnimation animateIn="slideInRight" animateOnce={true} viewport={1} duration={1} delay={0} className="scroll">
+        <Grid>
+          <Row>
+            <Col xs={4} md={4} lg={4}>
+              <h2 style={{color: 'black'}}>Exchange Rate Charting</h2>
+            </Col>
+            <Col xs={8} md={8} lg={8}>
+            <ButtonToolbar className="toolbar">
+              <DropdownButton
+                bsStyle={'default'}
+                title={this.state.tradingTo}
+                key={1}
+                id={`tradeToDD`}
+                className='xx'
+              >
+                <MenuItem eventKey="1" onClick={() => {this.updateTradingTo('ETH')}}>ETH</MenuItem>
+                <MenuItem eventKey="2" onClick={() => {this.updateTradingTo('LTC')}}>LTC</MenuItem>
+                <MenuItem eventKey="3" onClick={() => {this.updateTradingTo('BTC')}}>BTC</MenuItem>
+
+              </DropdownButton>
+              <DropdownButton
+                bsStyle={'default'}
+                title={this.state.tradingFrom}
+                key={2}
+
+                id={`tradeFromDD`}
+              >
+                <MenuItem eventKey="1" onClick={() => {this.updateTradingFrom('USD')}}>USD</MenuItem>
+                <MenuItem eventKey="2" onClick={() => {this.updateTradingFrom('ETH')}}>ETH</MenuItem>
+                <MenuItem eventKey="3" onClick={() => {this.updateTradingFrom('LTC')}}>LTC</MenuItem>
+                <MenuItem eventKey="4" onClick={() => {this.updateTradingFrom('BTC')}}>BTC</MenuItem>
+              </DropdownButton>
+                <Button id={`retrVal`} bsStyle={'default'} onClick={this.retrieveValue}> Retrieve Value </Button>
+              </ButtonToolbar>
+              <br></br>
+              <br></br>
+            </Col>
+          </Row>
+        </Grid>
+
+        <br></br>
+
+
+
       <div id="chahts"></div>
+
       <br></br><br></br>
+      </ScrollAnimation>
+      </div>
       <Parallax className='par'
         blur={6}
         bgImage={bg2}
@@ -384,45 +416,89 @@ class App extends Component {
 
         <br></br>
         <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <ScrollAnimation animateIn="slideInRight" animateOnce={true} viewport={1} duration={1} delay={0} className="scroll">
+          <Grid>
+            <Row className="show-grid">
 
-
-
-
-        <Grid>
-          <Row className="show-grid">
-            <Col xs={12} md={12} lg={12}>
-                  <ResponsiveContainer width="100%" height={300}>
-                      <BarChart data={chartData}
-                          >
-                     <CartesianGrid strokeDasharray="3 3"/>
-                     <XAxis dataKey="name"/>
-                     <YAxis/>
-                     <Tooltip/>
-                     <Legend />
-                     <Bar dataKey="y" stackId="a" fill="#8884d8" />
-                     <Bar dataKey="y" stackId="a" fill="#82ca9d" />
-                    </BarChart>
-                </ResponsiveContainer>
-            </Col>
-            <Col xs={12} md={12} lg={12}>
-              <ResponsiveContainer width="100%" height={300}>
-                  <BarChart data={chartData}
-                      >
-                 <CartesianGrid strokeDasharray="3 3"/>
+              <Col xs={12} md={6} className="isAColumn">
+            <h1>Our Sales Projections</h1>
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart width={600} height={300} data={data}
+                    margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+                 <CartesianGrid/>
                  <XAxis dataKey="name"/>
                  <YAxis/>
                  <Tooltip/>
                  <Legend />
-                 <Bar dataKey="y" stackId="a" fill="#8884d8" />
-                 <Bar dataKey="y" stackId="a" fill="#82ca9d" />
-                </BarChart>
+                 <Bar dataKey="Net Profit" stackId='a' fill="#8884d8" />
+                 <Bar dataKey="Our Money" stackId='a' fill="#82ca9d" />
+
+              </BarChart>
             </ResponsiveContainer>
+
+            <p> The most dispositional value of the custom solutions we offer is stability. Although we operate predominantly in the software industry, we do extensive testing to make sure our products rate amongst the lowest in explosiveness. This ensures our clients use the most stabile software in the industry.</p>
             </Col>
-          </Row>
+            <Col xs={12} md={6} className="isAColumn">
+            <h1>Our Competitors</h1>
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart width={600} height={300} data={data}
+                    margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+                 <CartesianGrid/>
+                 <XAxis dataKey="name"/>
+                 <YAxis/>
+                 <Tooltip/>
+                 <Legend />
+                 <Bar dataKey="Opponent Money" stackId='b' fill="#8884d8" />
+                 <Bar dataKey="Opponent Success" stackId='b' fill="#82ca9d" />
+              </BarChart>
+            </ResponsiveContainer>
 
-        </Grid>
+            <p> The most dispositional value of the custom solutions we offer is stability. Although we operate predominantly in the software industry, we do extensive testing to make sure our products rate amongst the lowest in explosiveness. This ensures our clients use the most stabile software in the industry.</p>
+            </Col>
+            </Row>
+            <Row className="show-grid">
 
+              <Col xs={12} md={6} className="isAColumn">
+            <h1>Our Sales Projections</h1>
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart width={600} height={300} data={data}
+                    margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+                 <CartesianGrid/>
+                 <XAxis dataKey="name"/>
+                 <YAxis/>
+                 <Tooltip/>
+                 <Legend />
+                 <Bar dataKey="Net Profit" stackId='a' fill="#8884d8" />
+                 <Bar dataKey="Our Money" stackId='a' fill="#82ca9d" />
 
+              </BarChart>
+            </ResponsiveContainer>
+
+            <p> The most dispositional value of the custom solutions we offer is stability. Although we operate predominantly in the software industry, we do extensive testing to make sure our products rate amongst the lowest in explosiveness. This ensures our clients use the most stabile software in the industry.</p>
+            </Col>
+            <Col xs={12} md={6} className="isAColumn">
+            <h1>Our Competitors</h1>
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart width={600} height={300} data={data}
+                    margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+                 <CartesianGrid/>
+                 <XAxis dataKey="name"/>
+                 <YAxis/>
+                 <Tooltip/>
+                 <Legend />
+                 <Bar dataKey="Opponent Money" stackId='b' fill="#8884d8" />
+                 <Bar dataKey="Opponent Success" stackId='b' fill="#82ca9d" />
+              </BarChart>
+            </ResponsiveContainer>
+
+            <p> The most dispositional value of the custom solutions we offer is stability. Although we operate predominantly in the software industry, we do extensive testing to make sure our products rate amongst the lowest in explosiveness. This ensures our clients use the most stabile software in the industry.</p>
+            </Col>
+            </Row>
+          </Grid>
+      </ScrollAnimation>
 
         <hr></hr>
 

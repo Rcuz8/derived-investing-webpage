@@ -1,3 +1,5 @@
+
+
 .App {
   text-align: center;
 }
@@ -24,6 +26,7 @@
 
 .App-Text {
   align-content: center;
+  height: 90%;
 }
 
 .TXTAREA {
@@ -78,9 +81,8 @@ align-items: center;
  #firstJumbo {
   background-color: black;
   color: lightgrey;
-  height: 120px;
-  text-align:
-  ;
+  height: 80px;
+  padding: 5px;
 }
 .jjj {
   background-image: url("./img/bg2.jpeg");
@@ -88,7 +90,7 @@ align-items: center;
 .jumbotron {
   background-color: #444444;
   color: lightgrey;
-
+  justify-content: center;
 }
 body {
   background-color: #444444;
@@ -121,6 +123,14 @@ hr {
 .toolbar {
   display: flex;
 justify-content: center;
+margin-top: 20px;
+}
+
+.exchange-view {
+  background-color: white;
+  min-height: 60px;
+  padding-top: 30px;
+  color: black;
 }
 
 .scroll {
@@ -145,11 +155,6 @@ justify-content: center;
   color: #444444;
   border: 2px solid grey;
 }
-
-/* Google Fonts */
-@import url(https://fonts.googleapis.com/css?family=Anonymous+Pro);
-/* GLOBAL STYLES */
-
 .myPlot {
   height: 200px;
   width: 200px;
@@ -211,9 +216,20 @@ Parallax {
 .show-grid {
   width: 100%;
   padding: 10px;
+
 }
 
 h2 {
   float: left;
   margin-left: 5%;
+}
+
+@media (max-width: 600px) {
+  #firstJumbo {
+    height: 120px;
+
+  }
+  ButtonToolbar {
+    width: 100%;
+  }
 }
