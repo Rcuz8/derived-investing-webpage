@@ -71,16 +71,17 @@ class MyCustomChart extends React.Component {
   }
   render() {
     return (
-    <LineChart width={800} height={400} data={this.props.data}
-          margin={{top: 95, right: 20, left: 20, bottom: 15}}>
+    <ResponsiveContainer width="90%" height={300}>
+    <LineChart data={this.props.data}
+          margin={{top: 30, right: 0, left: 0, bottom: 5}}>
      <XAxis dataKey="name"/>
      <YAxis/>
-     <CartesianGrid strokeDasharray="3 3"/>
      <Tooltip/>
      <Legend />
      <Line type="monotone" dataKey="rate" stroke="#8884d8" activeDot={{r: 8}}/>
      {/* <Line type="monotone" dataKey="uv" stroke="#82ca9d" /> */}
     </LineChart>
+    </ResponsiveContainer>
   )};
 }
 
@@ -179,7 +180,7 @@ class App extends Component {
         <Navbar inverse fixedTop collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="#home">Web Page</a>
+              <a href="#home">XyesX</a>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
@@ -229,6 +230,7 @@ class App extends Component {
           <Grid>
         <Row className="show-grid">
           <Col xs={12} md={4} className="isAColumn">
+              <ScrollAnimation animateIn="bounceIn" viewport={1} duration={1} delay={0} className="scroll">
             <ResponsiveContainer width="100%" height={300}>
               <PieChart onMouseEnter={this.onPieEnter}>
               <Pie stroke="none" fill="red"
@@ -248,6 +250,7 @@ class App extends Component {
             </ResponsiveContainer>
             <h1>Connectivity</h1>
             <p> Connection is fundamental in any product. In our distributed peer-to-peer systems, we place a heavy emphasis on connections by connecting our connections. We supplement this by further connecting the connections that connect the connections.</p>
+            </ScrollAnimation>
           </Col>
           <Col xs={12} md={4} className="isAColumn">
             <ScrollAnimation animateIn="bounceIn" viewport={1} duration={1} delay={0} className="scroll">
@@ -273,6 +276,7 @@ class App extends Component {
             <p> Agility. Reactivity. Quickness. Each of these are characteristics of a Pronghorn Antelope. We accesorize our products with the lightweight, logically-efficient code and robust APIs in a similar way in which one could accesorize an antelope.</p>
           </Col>
           <Col xs={12} md={4} className="isAColumn">
+              <ScrollAnimation animateIn="bounceIn" viewport={1} duration={1} delay={0} className="scroll">
             <ResponsiveContainer width="100%" height={300}>
               <PieChart onMouseEnter={this.onPieEnter}>
               <Pie stroke="none" fill="red"
@@ -292,6 +296,7 @@ class App extends Component {
             </ResponsiveContainer>
             <h1>Explosiveness</h1>
             <p> The most dispositional value of the custom solutions we offer is stability. Although we operate predominantly in the software industry, we do extensive testing to make sure our products rate amongst the lowest in explosiveness. This ensures our clients use the most stabile software in the industry.</p>
+            </ScrollAnimation>
           </Col>
         </Row>
           </Grid>
@@ -301,10 +306,10 @@ class App extends Component {
       <ScrollAnimation animateIn="slideInRight" animateOnce={true} viewport={1} duration={1} delay={0} className="scroll">
         <Grid>
           <Row>
-            <Col xs={4} md={4} lg={4}>
-              <h2 style={{color: 'black'}}>Exchange Rate Charting</h2>
+            <Col xs={0} md={5} lg={5} id='exchCol'>
+                <div class="exchRateLbl">Exchange Rate Charting</div>
             </Col>
-            <Col xs={8} md={8} lg={8}>
+            <Col xs={12} md={7} lg={7}>
             <ButtonToolbar className="toolbar">
               <DropdownButton
                 bsStyle={'default'}
@@ -322,7 +327,7 @@ class App extends Component {
                 bsStyle={'default'}
                 title={this.state.tradingFrom}
                 key={2}
-
+                
                 id={`tradeFromDD`}
               >
                 <MenuItem eventKey="1" onClick={() => {this.updateTradingFrom('USD')}}>USD</MenuItem>
