@@ -1,12 +1,14 @@
-## Something
+## Derived Investing
 
-In the project directory, you can run:
+A Mathematical approach to Investments on Cryptographic Assets
+<br>
 
-### `codee`
+ Using multi-exchange exchange rate history, the custom server built for this webpage quiries the past three years of exchange rate data and compiles the data into a single mathematical function using an advanced, polynonial-inclusive variant of least-squares regression, and returns the data to be graphed on the front-end. 
+ 
+## Next Update
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
+ - Function will be derived two times (both of which will also be displayed on graph
+ - Derivative data will work cohesively with function graph and modern technical analysis methods to create trendlines and potentially extrapolate floor / ceiling breaking trends.
+ 
+ Known Issue:
+ The mathematical function returns correct output through a 7th degree polynomial, where the function graph flips.
